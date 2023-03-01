@@ -1,19 +1,38 @@
 #include "main.h"
 
 /**
- * _strcmp - Compares pointers to two strings.
- * @s1: A pointer to the first string to be compared.
- * @s2: A pointer to the second string to be compared.
+ * cap_string - Capitalizes all words of a string.
+ * @str: The string to be capitalized.
  *
- * Return: If str1 < str2, the negative difference of the first unmatched char
- * If str1 == str2, 0.
- * If str1 > str2, the positive difference of the first unmatched char
-*/
-int _strcmp(char *s1, char *s2)
+ * Return: A pointer to the changed string.
+ */
+char *cap_string(char *str)
 {
-	while (*s1 && *s2 && *s1 == *s2)
+	int index = 0;
+
+	while (str[index])
 	{
-		s1++;
-		s2++;
-		return (*s1 - *s2);
+		while (!(str[index] >= 'a' && str[index] <= 'z'))
+			index++;
+
+		if (str[index - 1] == ' ' ||
+		    str[index - 1] == '\t' ||
+		    str[index - 1] == '\n' ||
+		    str[index - 1] == ',' ||
+		    str[index - 1] == ';' ||
+		    str[index - 1] == '.' ||
+		    str[index - 1] == '!' ||
+		    str[index - 1] == '?' ||
+		    str[index - 1] == '"' ||
+		    str[index - 1] == '(' ||
+		    str[index - 1] == ')' ||
+		    str[index - 1] == '{' ||
+		    str[index - 1] == '}' ||
+		    index == 0)
+			str[index] -= 32;
+
+		index++;
+	}
+
+	return (str);
 }
