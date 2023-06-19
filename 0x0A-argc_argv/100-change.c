@@ -20,7 +20,7 @@ int main(int argc, char **argv)
 		return (1);
 	}
 
-	total = strtol(argv[1], &c, 10);
+	amount = strtol(argv[1], &c, 10);
 	count = 0;
 
 	if (!*c)
